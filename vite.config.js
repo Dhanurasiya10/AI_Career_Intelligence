@@ -3,7 +3,7 @@ import react from '@vitejs/plugin-react'
 
 export default defineConfig({
   plugins: [react()],
-  base: '/AI_Career_Intelligence/',
+  base: '/',
 
   server: {
     port: 3000,
