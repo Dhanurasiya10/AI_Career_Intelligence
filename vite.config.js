@@ -7,6 +7,10 @@ export default defineConfig(({ mode }) => {
   return {
     plugins: [react()],
     base: mode === 'production' ? '/static/' : '/',
+    build: {
+      outDir: 'backend/frontend_dist',
+      emptyOutDir: true,
+    },
     server: {
       port: 3000,
       proxy: {

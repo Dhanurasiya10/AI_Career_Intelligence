@@ -6,7 +6,7 @@ import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
 PROJECT_ROOT = BASE_DIR.parent
-FRONTEND_DIST_DIR = PROJECT_ROOT / 'dist'
+FRONTEND_DIST_DIR = BASE_DIR / 'frontend_dist'
 VITE_ASSETS_DIR = FRONTEND_DIST_DIR / 'assets'
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-employai-super-secret-key-2026')
@@ -14,6 +14,7 @@ SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-employai-super-secret
 DEBUG = os.environ.get('DEBUG', 'False') == 'True'
 
 ALLOWED_HOSTS = ['localhost', '127.0.0.1', '.onrender.com']
+CSRF_TRUSTED_ORIGINS = ['https://*.onrender.com']
 
 if os.environ.get('RENDER_EXTERNAL_HOSTNAME'):
     ALLOWED_HOSTS.append(os.environ['RENDER_EXTERNAL_HOSTNAME'])
