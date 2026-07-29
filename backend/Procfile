@@ -1,0 +1,1 @@
+web: gunicorn employai_backend.wsgi:application
