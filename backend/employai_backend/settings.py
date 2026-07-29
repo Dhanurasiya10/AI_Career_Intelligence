@@ -5,6 +5,9 @@ from datetime import timedelta
 import dj_database_url
 
 BASE_DIR = Path(__file__).resolve().parent.parent
+PROJECT_ROOT = BASE_DIR.parent
+FRONTEND_DIST_DIR = PROJECT_ROOT / 'dist'
+VITE_ASSETS_DIR = FRONTEND_DIST_DIR / 'assets'
 
 SECRET_KEY = os.environ.get('SECRET_KEY', 'django-insecure-employai-super-secret-key-2026')
 
@@ -51,7 +54,7 @@ ROOT_URLCONF = 'employai_backend.urls'
 TEMPLATES = [
     {
         'BACKEND': 'django.template.backends.django.DjangoTemplates',
-        'DIRS': [],
+        'DIRS': [FRONTEND_DIST_DIR],
         'APP_DIRS': True,
         'OPTIONS': {
             'context_processors': [
@@ -109,7 +112,9 @@ USE_TZ = True
 
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
+STATICFILES_DIRS = [('assets', VITE_ASSETS_DIR)] if VITE_ASSETS_DIR.exists() else []
 STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
+WHITENOISE_KEEP_ONLY_HASHED_FILES = False
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'

@@ -1,9 +1,9 @@
 import axios from 'axios';
 
-const apiUrl = (import.meta.env.VITE_API_URL || 'https://ai-career-intelligence-c2c0.onrender.com').replace(/\/$/, '');
+const apiUrl = import.meta.env.VITE_API_URL?.replace(/\/$/, '');
 
 const api = axios.create({
-  baseURL: `${apiUrl}/api`,
+  baseURL: apiUrl ? `${apiUrl}/api` : '/api',
   headers: {
     'Content-Type': 'application/json',
   },

@@ -6,7 +6,7 @@ export default defineConfig(({ mode }) => {
 
   return {
     plugins: [react()],
-    base: '/AI_Career_Intelligence/',
+    base: mode === 'production' ? '/static/' : '/AI_Career_Intelligence/',
     server: {
       port: 3000,
       proxy: {
