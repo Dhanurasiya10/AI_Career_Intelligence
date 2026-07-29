@@ -114,10 +114,8 @@ USE_TZ = True
 STATIC_URL = '/static/'
 STATIC_ROOT = BASE_DIR / 'staticfiles'
 STATICFILES_DIRS = [('assets', VITE_ASSETS_DIR)] if VITE_ASSETS_DIR.exists() else []
-STATICFILES_STORAGE = 'whitenoise.storage.CompressedStaticFilesStorage'
+STATICFILES_STORAGE = 'whitenoise.storage.CompressedManifestStaticFilesStorage'
 WHITENOISE_KEEP_ONLY_HASHED_FILES = False
-WHITENOISE_ROOT = FRONTEND_DIST_DIR
-WHITENOISE_INDEX_FILE = True
 
 MEDIA_URL = '/media/'
 MEDIA_ROOT = BASE_DIR / 'media'
